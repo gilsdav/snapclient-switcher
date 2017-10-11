@@ -18,3 +18,5 @@ Be able to switch host (snapserver) of snapclient by a simple rest call.
 * Change host: `http://snapclientIp:8090?url=newHostIp`
 * Change port: `http://snapclientIp:8090?port=newPort`
 * Change host and port: `http://snapclientIp:8090?url=newHostIp&port=newPort`
+
+**Debian service comming soon**
