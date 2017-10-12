@@ -12,11 +12,13 @@ Be able to switch host (snapserver) of snapclient by a simple rest call.
 ## start snapclient-switcher
 * Execute `python snapclient-switcher.py [port]`
 
+## start snapclient-switcher as service ##
+* Copy `snapclient-switcher.py` into `/usr/local/bin/snapclient-switcher` folder
+* Start daemon `sudo ./snapclient-switcher.sh start`
+
 ## how to use
 `http://snapclientIp:8090/[?url=xxx.xxx.xxx.xxx][&port=xxxx]`
 * Reset to default: `http://snapclientIp:8090`
 * Change host: `http://snapclientIp:8090?url=newHostIp`
 * Change port: `http://snapclientIp:8090?port=newPort`
 * Change host and port: `http://snapclientIp:8090?url=newHostIp&port=newPort`
-
-**Debian service comming soon**
