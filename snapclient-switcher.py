@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+__version__ = '0.1'
+__author__ = 'David Gilson (Gilsdav)'
 
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from urlparse import parse_qs
@@ -27,9 +29,7 @@ class S(BaseHTTPRequestHandler):
     
     @staticmethod
     def start_new_instance():
-        print ('new snapclient')
-        print (S.snap_server)
-        print (S.snap_port)
+        print ('New connection : ' + S.snap_server + ':' + S.snap_port)
         snap_opts = ' --host ' + S.snap_server + ' --port ' + S.snap_port
         S.stop_previous_instance()
         S.pro = subprocess.Popen(daemon + snap_opts, stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
@@ -62,7 +62,7 @@ class S(BaseHTTPRequestHandler):
 def run(server_class=HTTPServer, handler_class=S, port=8090):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
-    print ('Starting httpd...')
+    print ('Starting snapclient-switcher v' + __version__ + ' ...')
     S.start_new_instance()
     httpd.serve_forever()
 
