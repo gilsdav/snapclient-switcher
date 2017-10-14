@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Disable default snapclient
+service snapclient stop
+systemctl disable snapclient
+
+# Enable new snapclient
+systemctl enable snapclient-switcher
+service snapclient-switcher start
+
+exit 0

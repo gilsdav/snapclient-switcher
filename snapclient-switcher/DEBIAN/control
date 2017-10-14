@@ -1,0 +1,10 @@
+Package: snapclient-switcher
+Version: 0.1
+Section: custom
+Priority: optional
+Architecture: all
+Depends: python (>= 2.7.11-1), snapclient (>= 0.11.1)
+Essential: no
+Installed-Size: 1024
+Maintainer: David Gilson (https://github.com/gilsdav/snapclient-switcher)
+Description: This service allow you to easily switch snapclient to other host

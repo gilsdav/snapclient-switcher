@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Remove log files
+rm /tmp/snapclient-switcher*
+
+exit 0
