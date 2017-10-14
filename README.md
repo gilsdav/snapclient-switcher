@@ -6,11 +6,11 @@ Be able to switch host (snapserver) of snapclient by a simple rest call.
 * Default snapserver: `127.0.0.1:1704`
 
 ## Installation
-* Download: ``
-* Install: `sudo dpkg -i snapclient-switcher-0.1.deb`
+* Download last .deb file: https://github.com/gilsdav/snapclient-switcher/releases
+* Install: `sudo dpkg -i snapclient-switcher-x.x.deb`
 
 ## Uninstallation
-* Uninstall: `sudo dpkg -P snapclient-switcher-0.1.deb`
+* Uninstall: `sudo dpkg -P snapclient-switcher-x.x.deb`
 
 ## How to use
 `http://snapclientIp:8090/[?url=xxx.xxx.xxx.xxx][&port=xxxx]`
