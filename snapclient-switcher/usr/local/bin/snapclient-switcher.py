@@ -96,11 +96,13 @@ class Switcher(BaseHTTPRequestHandler):
     def _set_success_headers(self):
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
 
     def _set_error_headers(self):
         self.send_response(400)
         self.send_header('Content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
 
     def do_GET(self):
