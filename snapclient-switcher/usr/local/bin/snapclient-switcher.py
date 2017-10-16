@@ -65,9 +65,9 @@ class MyLogger(object):
                         self.logger.log(self.level, message.rstrip())
 
 # Replace stdout with logging to file at INFO level
-#sys.stdout = MyLogger(logger, logging.INFO)
+sys.stdout = MyLogger(logger, logging.INFO)
 # Replace stderr with logging to file at ERROR level
-#sys.stderr = MyLogger(logger, logging.ERROR)
+sys.stderr = MyLogger(logger, logging.ERROR)
 
 
 ### Switcher ###
