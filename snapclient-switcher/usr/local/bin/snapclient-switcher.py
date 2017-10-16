@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-__version__ = '0.1'
+__version__ = '0.2'
 __author__ = 'David Gilson (Gilsdav)'
 
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
@@ -65,9 +65,9 @@ class MyLogger(object):
                         self.logger.log(self.level, message.rstrip())
 
 # Replace stdout with logging to file at INFO level
-sys.stdout = MyLogger(logger, logging.INFO)
+#sys.stdout = MyLogger(logger, logging.INFO)
 # Replace stderr with logging to file at ERROR level
-sys.stderr = MyLogger(logger, logging.ERROR)
+#sys.stderr = MyLogger(logger, logging.ERROR)
 
 
 ### Switcher ###
@@ -104,18 +104,23 @@ class Switcher(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        params = parse_qs(self.path[2:])
-        if 'url' in params:
-            Switcher.snap_server = params['url'][0]
+        print(self.path)
+        if self.path == '/status':
+            self._set_success_headers()
+            self.wfile.write('{"status":"success", "url":"' + Switcher.snap_server + '", "port":"' + Switcher.snap_port + '"}')
         else:
-            Switcher.snap_server = DEFAULT_SNAP_SERVER
-        if 'port' in params:
-            Switcher.snap_port = params['port'][0]
-        else:
-            Switcher.snap_port = DEFAULT_SNAP_PORT
-        Switcher.start_new_instance()
-        self._set_success_headers()
-        self.wfile.write('{"status":"success"}')
+            params = parse_qs(self.path[2:])
+            if 'url' in params:
+                Switcher.snap_server = params['url'][0]
+            else:
+                Switcher.snap_server = DEFAULT_SNAP_SERVER
+            if 'port' in params:
+                Switcher.snap_port = params['port'][0]
+            else:
+                Switcher.snap_port = DEFAULT_SNAP_PORT
+            Switcher.start_new_instance()
+            self._set_success_headers()
+            self.wfile.write('{"status":"success"}')
 
 
 def run(server_class=HTTPServer, handler_class=Switcher, port=8090):
